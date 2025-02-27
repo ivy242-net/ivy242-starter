@@ -1,0 +1,13 @@
+<h1>Dashboard</h1>
+<% if (request.auth) { %>
+    <!-- Using Record methods -->
+    <p>Welcome, <%= request.auth.get('email') %></p>
+  
+    <!-- Check verification status -->
+    <% if (request.auth.verified()) { %>
+      <p>✓ Verified account</p>
+    <% } %>
+  
+  <% } else { %>
+    <p>Please <a href="/login">log in</a>.</p>
+  <% } %>

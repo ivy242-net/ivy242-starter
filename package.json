@@ -1,0 +1,25 @@
+{
+  "name": "ivy-stack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "cd scripts && sh setup.sh",
+    "dev": "npx vite build --watch",
+    "build": "npx vite build && cd scripts && sh build.sh",
+    "host": "cd scripts && sh host.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "pocketbase": "^0.25.1",
+    "pocketpages": "^0.15.5",
+    "preact": "^10.26.3",
+    "preact-custom-element": "^4.3.0"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.1",
+    "vite": "^6.1.0"
+  }
+}

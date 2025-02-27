@@ -1,0 +1,18 @@
+<h1>Verifying...</h1>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const otp = searchParams.get('otp');
+        const otpId = searchParams.get('otpId');
+        if (otp && otpId) {
+            try {
+                const authData = await pb.collection('users').authWithOTP(otpId, otp);
+                // Redirect to dashboard page
+                window.location.href = '/dashboard';
+            } catch (err) {
+                // Redirect to login page with error message in query string
+                window.location.href = `/login?error=${err.message}`;
+            }
+        }
+    });
+</script>

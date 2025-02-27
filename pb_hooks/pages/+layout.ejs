@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Application</title>
+    <script src="<%= asset('assets/lib.iife.js') %>"></script>
+</head>
+<body>
+    <header>
+        <h1>IvyStack</h1>
+    </header>
+    <main>
+        <%- slot %>
+    </main>
+    <footer>
+        <p>&copy; <%= new Date().getFullYear() %> My Application</p>
+    </footer>
+</body>
+</html>
