@@ -1,10 +1,12 @@
-## To set the app ip address correctly
-- Go to http://192.168.20.64:8090/_/#/settings
-- Application name: <your app name>
-- Application url: http://192.168.20.64:8090/
+## Getting started
+1. Clone this repo
+2. Run `npm run setup`
+3. You will be prompted for app name & smtp password (found in proton pass)
+4. Once setup is completed, run `npm run host` to see your app available on the local network!
 
-## To configure the mailgun dev email sending to magic links
-- Go to http://192.168.20.64:8090/_/#/settings/mail
-- Enter `smtp.mailgun.org` in the smtp server field
-- Port 587
-- Check the proton pass note for username and password
+## Deploying on PocketHost
+This repository includes a Github action which will attempt to deploy to PocketHost on each push to `main`. 
+
+Do get started, create a new instance on PocketHost, then click on the FTP Access tab.
+
+In order to deploy, a handful of secrets must be set on the repository itself: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`, and `FTP_SERVER_DIR`.

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# filepath: /Users/hen/Documents/GitHub/stickr-chat/scripts/build.sh
 # Create a dist folder, and copy pb_public, pb_hooks, and pb_migrations to it
 
 # Create the dist directory if it doesn't exist

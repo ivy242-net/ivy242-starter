@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "cd scripts && sh setup.sh",
     "dev": "npx vite build --watch",
     "build": "npx vite build && cd scripts && sh build.sh",
-    "host": "cd scripts && sh host.sh"
+    "host": "cd scripts && sh host.sh",
+    "update:pocketpages": "cd scripts && sh update-pocketpages.sh",
+    "update:pocketbase": "cd scripts && sh update-pocketbase.sh"
   },
   "author": "",
   "license": "ISC",

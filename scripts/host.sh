@@ -3,9 +3,6 @@
 # Source the .env.local file from the parent directory
 if [ -f ../.env.local ]; then
     export $(xargs < ../.env.local)
-else
-    echo "The .env.local file was not found."
-    exit 1
 fi
 
 # Function to identify the local IP address
@@ -30,6 +27,11 @@ if [ -z "$local_ip" ]; then
     echo "Failed to identify the local IP address."
     exit 1
 fi
+
+# Programatically set the App url to the local IP address
+echo "Setting the App URL to http://$local_ip:8090"
+../pocketbase meta appURL="http://$local_ip:8090"
+
 
 # Start PocketBase with the identified local IP address
 echo "Starting PocketBase on IP: $local_ip"

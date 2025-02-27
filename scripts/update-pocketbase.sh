@@ -1,14 +1,6 @@
-#!/bin/bash
-
-echo "Installing dependencies..."
-
-# Run npm install
-
-cd ../ && npm install
-
-echo "Dependencies installed."
-
-cd scripts
+# Ask the user for the desired PocketBase version number
+echo "Enter the desired PocketBase version number:"
+read -p "Version number (e.g., 0.25.8): " version
 
 # Function to detect the platform
 detect_platform() {
@@ -44,11 +36,6 @@ if [[ "$platform" == "UNKNOWN"* ]] || [[ "$architecture" == "UNKNOWN"* ]]; then
     exit 1
 fi
 
-# Define the PocketBase version
-version="0.25.8"
-
-echo "Downloading PocketBase version ${version} for ${platform} ${architecture}..."
-
 # Construct the download URL
 url="https://github.com/pocketbase/pocketbase/releases/download/v${version}/pocketbase_${version}_${platform}_${architecture}.zip"
 
@@ -74,43 +61,4 @@ cp pb_temp/pocketbase ../pocketbase
 # Clean up the extracted directory
 rm -rf pb_temp
 
-# Create an app name variable, based on the directory above the current directory
-app_name=$(basename $(dirname $(pwd)))
-
-# Prompt the user for the app name
-read -p "Enter the app name (default: $app_name): " input_app_name
-
-# Use the input app name if provided
-if [ ! -z "$input_app_name" ]; then
-    app_name=$input_app_name
-fi
-
-../pocketbase meta appName="$app_name"
-
-# Set the smtp configuration
-../pocketbase smtp host="smtp.mailgun.org" port=587 user="postmaster@mg.ivy242.net"
-
-# Create an smtp password 
-read -p "Enter the smtp password (found in Ivy242 proton pass): " smtp_password
-
-# Use the input smtp password if provided
-if [ ! -z "$smtp_password" ]; then
-    ../pocketbase smtp password="$smtp_password"
-fi
-
-echo "Creating initial superuser..."
-
-../pocketbase superuser email=admin@ivy242.net password=admin@ivy242.net
-
-echo "PocketBase setup completed."
-
-echo "Running initial build..."
-
-cd ..
-
-# Run the build script
-npm run build
-
-echo "Initial build completed."
-
-echo "All set! You can get started by running 'npm run host'."
+echo "PocketBase updated to version $version."
