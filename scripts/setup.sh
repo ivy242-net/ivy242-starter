@@ -87,15 +87,12 @@ fi
 
 ../pocketbase meta appName="$app_name"
 
-# Set the smtp configuration
-../pocketbase smtp host="smtp.mailgun.org" port=587 user="postmaster@mg.ivy242.net"
-
 # Create an smtp password 
 read -p "Enter the smtp password (found in Ivy242 proton pass): " smtp_password
 
 # Use the input smtp password if provided
 if [ ! -z "$smtp_password" ]; then
-    ../pocketbase smtp password="$smtp_password"
+    ../pocketbase smtp host="smtp.mailgun.org" port=587 username="postmaster@mg.ivy242.net" password="$smtp_password"
 fi
 
 echo "Creating initial superuser..."
