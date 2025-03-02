@@ -26,4 +26,11 @@ else
     echo "Warning: ./pb_migrations directory does not exist."
 fi
 
+# Check if package.json exists and copy it
+if [ -f "../package.json" ]; then
+    cp ../package.json ../dist/
+else
+    echo "Warning: ./package.json file does not exist."
+fi
+
 echo "Build dist folder completed."

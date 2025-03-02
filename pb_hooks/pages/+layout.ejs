@@ -3,16 +3,45 @@
 <head>
     <title>My Application</title>
     <script src="<%= asset('assets/lib.iife.js') %>"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0/themes.css" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <header>
-        <h1>IvyStack</h1>
+<body class="flex flex-col min-h-screen">
+    <header class="navbar bg-base-100 shadow-sm">
+        <div class="navbar-start">
+            <div class="dropdown">
+            <div class="drawer">
+                <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+                <div class="drawer-content">
+                    <!-- Page content here -->
+                    <label for="my-drawer" tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
+                    </label>
+                </div>
+                <div class="drawer-side">
+                    <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+                    <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                    <!-- Sidebar content here -->
+                    <li><a>Sidebar Item 1</a></li>
+                    <li><a>Sidebar Item 2</a></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-center">
+            <a class="btn btn-ghost text-xl" href="<%= $app.settings().meta.appURL %>"><%= $app.settings().meta.appName %></a>
+        </div>
+        <div class="navbar-end">
+            <a class="btn btn-primary" href="/login">Login</a>
+        </div>
     </header>
-    <main>
-        <%- slot %>
+    <main class="flex flex-col flex-1">
+    <%- slot %>
     </main>
     <footer>
-        <p>&copy; <%= new Date().getFullYear() %> My Application</p>
+        <p>&copy; 2021 My Application</p>
     </footer>
 </body>
 </html>
