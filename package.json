@@ -8,7 +8,6 @@
     "build": "npx vite build && cd scripts && sh build.sh",
     "host": "cd scripts && sh host.sh",
     "deploy": "cd scripts && sh deploy.sh",
-    "update:pocketpages": "cd scripts && sh update-pocketpages.sh",
     "update:pocketbase": "cd scripts && sh update-pocketbase.sh"
   },
   "author": "",
