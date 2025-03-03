@@ -87,13 +87,34 @@ fi
 
 ../pocketbase meta appName="$app_name"
 
-# Create an smtp password 
-read -p "Enter the smtp password (found in Ivy242 proton pass): " smtp_password
+# Create an smtp host (default to smtp.mailgun.org)
+read -p "Enter SMTP host (default: smtp.mailgun.org): " smtp_host
 
-# Use the input smtp password if provided
-if [ ! -z "$smtp_password" ]; then
-    ../pocketbase smtp host="smtp.mailgun.org" port=587 username="postmaster@mg.ivy242.net" password="$smtp_password"
+# Set the default smtp host if not provided
+if [ -z "$smtp_host" ]; then
+    smtp_host="smtp.mailgun.org"
 fi
+
+# Create an smtp username
+read -p "Enter SMTP username: " smtp_username
+
+# Create an smtp password 
+read -p "Enter SMTP password: " smtp_password
+
+# Use the input smtp host, username, and password if provided
+if [ ! -z "$smtp_host" ]; then
+    ../pocketbase smtp host="$smtp_host" port=587 username="$smtp_username" password="$smtp_password"
+fi
+
+# Create a sending domain (default to ivy242.net)
+read -p "Enter sending domain (default: ivy242.net): " sending_domain
+
+# Set the default sending domain if not provided
+if [ -z "$sending_domain" ]; then
+    sending_domain="ivy242.net"
+fi
+
+../pocketbase meta senderAddress="support@$sending_domain"
 
 echo "Creating initial superuser..."
 
