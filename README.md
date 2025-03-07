@@ -4,6 +4,9 @@
 3. You will be prompted for app name & smtp password (found in proton pass)
 4. Once setup is completed, run `npm run host` to see your app available on the local network!
 
+For macs that can't add things to firewalls try:
+`/usr/libexec/ApplicationFirewall/socketfilterfw --add <path-to-pocketbase-executable`
+
 ## Deploying on PocketHost
 Do get started, create a new instance on PocketHost and note the instance name you set it up with.
 
