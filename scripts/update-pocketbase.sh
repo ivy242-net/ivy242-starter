@@ -1,6 +1,6 @@
 # Ask the user for the desired PocketBase version number
 echo "Enter the desired PocketBase version number:"
-read -p "Version number (e.g., 0.25.8): " version
+read -p "Version number (e.g., 0.25.9): " version
 
 # Function to detect the platform
 detect_platform() {

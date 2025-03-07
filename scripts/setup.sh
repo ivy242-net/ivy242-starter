@@ -45,7 +45,7 @@ if [[ "$platform" == "UNKNOWN"* ]] || [[ "$architecture" == "UNKNOWN"* ]]; then
 fi
 
 # Define the PocketBase version
-version="0.25.8"
+version="0.25.9"
 
 echo "Downloading PocketBase version ${version} for ${platform} ${architecture}..."
 
@@ -131,4 +131,6 @@ npm run build
 
 echo "Initial build completed."
 
-echo "All set! You can get started by running 'npm run host'."
+echo "All set! You can get started by running 'npm run dev'."
+echo "If you'd like to preview your project on the local network, run 'npm run host'."
+echo "If you'd like to deploy your project, run 'npm run deploy'."

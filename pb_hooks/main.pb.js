@@ -68,7 +68,7 @@ $app.rootCmd.addCommand(new Command({
         let settings = $app.settings();
         // for all available settings fields you could check
         // https://pocketbase.io/jsvm/interfaces/core.Settings.html
-        const allowedKeys = ['appName', 'appURL'];
+        const allowedKeys = ['appName', 'appURL', 'senderAddress'];
         for (const arg of Object.keys(argsObj)) {
             if (allowedKeys.includes(arg)) {
                 settings.meta[arg] = argsObj[arg];
