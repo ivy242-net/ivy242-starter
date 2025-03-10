@@ -8,12 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const targetDirectory = process.argv[2];
-
-if (!targetDirectory) {
-    // Assume the target directory is the current working directory
-    targetDirectory = process.cwd();
-}
+const targetDirectory = process.argv[2] ? process.argv[2] : process.cwd();
 
 // Downlaod the latest release asset (zip) from the GitHub repository (ivy242-net/ivy242-starter)
 const releaseUrl = 'https://api.github.com/repos/ivy242-net/ivy242-starter/releases/latest';

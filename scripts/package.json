@@ -1,6 +1,6 @@
 {
     "name": "@ivy242-starter/scripts",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "main": "index.js",
     "scripts": {
         "preview": "node preview.js",
