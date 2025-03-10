@@ -22,6 +22,7 @@ pocketbase
 # Build output
 dist/
 build/
+release/
 pb_hooks/pages/assets/lib.iife.js
 
 # IDE specific files

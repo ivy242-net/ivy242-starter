@@ -6,10 +6,10 @@ export default defineConfig({
     preact(),
   ],
   build: {
-    outDir: 'pb_hooks/pages/assets',
+    outDir: 'dist',
     lib: {
-      entry: 'lib/index.js',
-      name: 'IvyStarter',
+      entry: 'src/index.js',
+      name: 'Ivy242Starter',
       fileName: 'lib',
       // formats: ['es', 'umd'] // choose whichever you need
       formats: ['iife'],

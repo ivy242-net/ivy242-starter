@@ -4,7 +4,7 @@ echo "Installing dependencies..."
 
 # Run npm install
 
-cd ../ && npm install
+cd .. && npm install
 
 echo "Dependencies installed."
 
@@ -60,16 +60,11 @@ curl -L -o pocketbase.zip ${url}
 echo "Unzipping pocketbase.zip..."
 unzip pocketbase.zip -d pb_temp
 
-# List the contents of the unzipped directory for debugging
-echo "Contents of the unzipped directory:"
-ls -l pb_temp
-
 # Clean up the zip file
 rm pocketbase.zip
 
-# Copy the PocketBase binary to the project root
-echo "Copying PocketBase binary to the current directory..."
-cp pb_temp/pocketbase ../pocketbase
+# Copy the PocketBase binary to the pb directory
+cp pb_temp/pocketbase ../server
 
 # Clean up the extracted directory
 rm -rf pb_temp
@@ -85,7 +80,7 @@ if [ ! -z "$input_app_name" ]; then
     app_name=$input_app_name
 fi
 
-../pocketbase meta appName="$app_name"
+../server/pocketbase meta appName="$app_name"
 
 # Create an smtp host (default to smtp.mailgun.org)
 read -p "Enter SMTP host (default: smtp.mailgun.org): " smtp_host
@@ -103,7 +98,7 @@ read -p "Enter SMTP password: " smtp_password
 
 # Use the input smtp host, username, and password if provided
 if [ ! -z "$smtp_host" ]; then
-    ../pocketbase smtp host="$smtp_host" port=587 username="$smtp_username" password="$smtp_password"
+    ../server/pocketbase smtp host="$smtp_host" port=587 username="$smtp_username" password="$smtp_password"
 fi
 
 # Create a sending domain (default to ivy242.net)
@@ -114,11 +109,11 @@ if [ -z "$sending_domain" ]; then
     sending_domain="ivy242.net"
 fi
 
-../pocketbase meta senderAddress="support@$sending_domain"
+../server/pocketbase meta senderAddress="support@$sending_domain"
 
 echo "Creating initial superuser..."
 
-../pocketbase superuser email=admin@ivy242.net password=admin@ivy242.net
+../server/pocketbase superuser email=admin@ivy242.net password=admin@ivy242.net
 
 echo "PocketBase setup completed."
 
@@ -127,8 +122,8 @@ echo "Running initial build..."
 cd ..
 
 # Run the build script
-npm run build
+npm run build -w scripts
 
 echo "Initial build completed."
 
-echo "All set! You can get started by running 'npm run host'."
+echo "All set! You can get started by running 'npm run preview -w scripts'."

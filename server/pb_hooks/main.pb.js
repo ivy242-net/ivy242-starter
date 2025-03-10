@@ -67,7 +67,7 @@ $app.rootCmd.addCommand(new Command({
         }, {});
         let settings = $app.settings();
         // for all available settings fields you could check
-        // https://pocketbase.io/jsvm/interfaces/core.Settings.html
+        // https://pocketbase.io/clientvm/interfaces/core.Settings.html
         const allowedKeys = ['appName', 'appURL', 'senderAddress'];
         for (const arg of Object.keys(argsObj)) {
             if (allowedKeys.includes(arg)) {
@@ -88,7 +88,7 @@ $app.rootCmd.addCommand(new Command({
         }, {});
         let settings = $app.settings();
         // for all available settings fields you could check
-        // https://pocketbase.io/jsvm/interfaces/core.Settings.html
+        // https://pocketbase.io/clientvm/interfaces/core.Settings.html
         const allowedKeys = ['enabled', 'host', 'port', 'username', 'password'];
         // If enabled is not set, set it to true by default
         if (!argsObj.hasOwnProperty('enabled')) {

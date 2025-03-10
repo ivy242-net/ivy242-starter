@@ -1,0 +1,23 @@
+{
+    "name": "@ivy242-starter/scripts",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "preview": "node preview.js", 
+      "build": "node build.js",
+      "setup": "sh setup.sh",
+      "deploy": "sh deploy.sh",
+      "dev": "node dev.js",
+      "update:pocketbase": "sh update-pocketbase.sh"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "type": "module",
+    "dependencies": {
+      "@samkirkland/ftp-deploy": "^1.2.4",
+      "chokidar": "^4.0.3",
+      "dotenv": "^16.4.7"
+    }
+  }
+  

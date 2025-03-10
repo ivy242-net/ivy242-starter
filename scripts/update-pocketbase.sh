@@ -56,7 +56,7 @@ rm pocketbase.zip
 
 # Copy the PocketBase binary to the project root
 echo "Copying PocketBase binary to the current directory..."
-cp pb_temp/pocketbase ../pocketbase
+cp pb_temp/pocketbase ../server/pocketbase
 
 # Clean up the extracted directory
 rm -rf pb_temp
