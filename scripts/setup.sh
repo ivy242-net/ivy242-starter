@@ -135,4 +135,4 @@ npm run build -w scripts
 
 echo "Initial build completed."
 
-echo "All set! You can get started by running 'npm run preview -w scripts'."
+echo "All set! You can get started by running 'npm run dev'."

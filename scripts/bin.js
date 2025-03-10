@@ -11,8 +11,8 @@ const __dirname = path.dirname(__filename);
 const targetDirectory = process.argv[2];
 
 if (!targetDirectory) {
-    console.error('Please provide a target directory');
-    process.exit(1);
+    // Assume the target directory is the current working directory
+    targetDirectory = process.cwd();
 }
 
 // Downlaod the latest release asset (zip) from the GitHub repository (ivy242-net/ivy242-starter)
@@ -31,5 +31,8 @@ execFileSync('unzip', [assetPath, '-d', targetDirectory], { stdio: 'inherit' });
 // Remove the downloaded asset
 fs.unlinkSync(assetPath);
 
-console.log('Download and extraction complete! Run the following command to setup the project:');
-console.log(`cd ${targetDirectory} && npm run setup`);
+console.log('Download and extraction complete! Initiating setup...');
+
+// cd into the target directory and run npm run setup
+execFileSync('npm', ['run', 'setup'], { stdio: 'inherit', cwd: targetDirectory });
+
