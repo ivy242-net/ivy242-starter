@@ -23,7 +23,7 @@ pocketbase
 dist/
 build/
 release/
-pb_hooks/pages/assets/lib.iife.js
+server/pb_hooks/pages/assets/lib.iife.js
 
 # IDE specific files
 .idea/
