@@ -1,4 +1,8 @@
 ## Quickstart
+```
+npx ivy242-starter my-app
+```
+
 1. Run `npx ivy242-starter my-app`
 2. Run `cd my-app && npm run setup`
 3. You will be prompted for app name and SMTP credentials. Setup script will use this information to configure your project.
