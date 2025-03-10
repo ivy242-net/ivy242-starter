@@ -1,6 +1,6 @@
 {
     "name": "@ivy242-starter/client",
-    "version": "1.0.0",
+    "version": "0.0.2",
     "main": "index.js",
     "scripts": {
       "dev": "npx vite build --watch",

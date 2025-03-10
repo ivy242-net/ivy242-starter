@@ -1,6 +1,6 @@
 {
   "name": "ivy242-starter",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "setup": "npm run setup -w scripts",
