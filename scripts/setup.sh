@@ -1,5 +1,25 @@
 #!/bin/bash
 
+# Create an app name variable, based on the directory above the current directory
+app_name=$(basename $(dirname $(pwd)))
+
+# Prompt the user for the app name
+read -p "Enter the app name (default: $app_name): " input_app_name
+
+# Use the input app name if provided
+if [ ! -z "$input_app_name" ]; then
+    app_name=$input_app_name
+fi
+
+# Create a clean app name by replacing spaces with hyphens and converting to lowercase
+clean_app_name=$(echo "$app_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+# Replace ivy242-starer in each package.json file (root package.json, client/package.json, server/package.json, scripts/package.json) with the app name
+sed -i '' "s/ivy242-starter/$clean_app_name/g" ../package.json
+sed -i '' "s/ivy242-starter/$clean_app_name/g" ../client/package.json
+sed -i '' "s/ivy242-starter/$clean_app_name/g" ../server/package.json
+sed -i '' "s/ivy242-starter/$clean_app_name/g" ../scripts/package.json
+
 echo "Installing dependencies..."
 
 # Run npm install
@@ -68,17 +88,6 @@ cp pb_temp/pocketbase ../server
 
 # Clean up the extracted directory
 rm -rf pb_temp
-
-# Create an app name variable, based on the directory above the current directory
-app_name=$(basename $(dirname $(pwd)))
-
-# Prompt the user for the app name
-read -p "Enter the app name (default: $app_name): " input_app_name
-
-# Use the input app name if provided
-if [ ! -z "$input_app_name" ]; then
-    app_name=$input_app_name
-fi
 
 ../server/pocketbase meta appName="$app_name"
 
