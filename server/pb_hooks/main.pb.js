@@ -8,8 +8,8 @@ onRecordAuthRequest((e) => {
             path: '/',
             maxAge: 60 * 60 * 24 * 30,
             secure: appUrl?.startsWith('https://') ? true : false,
-            httpOnly: true,
-            sameSite: true,
+            httpOnly: false,
+            sameSite: true
         });
     } catch (err) {
         console.log('Auth cookie error', err);
@@ -21,17 +21,17 @@ onRecordAuthRequest((e) => {
 routerAdd("GET", "/logout", (e) => {
     try {
         const appUrl = $app.settings().appURL;
-        const cookies = e.request.cookies();
-        const pbAuth = cookies.find((cookie) => cookie.name === 'pb_auth');
+        // Clear the cookie
         e.setCookie({
             name: 'pb_auth',
             value: '',
             path: '/',
             maxAge: 0,
             secure: appUrl?.startsWith('https://') ? true : false,
-            httpOnly: true,
+            httpOnly: false,
             sameSite: true
         });
+        // Redirect to the login page
         e.redirect(302, '/login');
     } catch (err) {
         console.log('Logout error', err);
@@ -47,8 +47,24 @@ routerUse(new Middleware((e) => {
             const record = $app.findAuthRecordByToken(token, "auth");
             e.auth = record;
         } catch (err) {
-            if (err.value.error() === 'sql: no rows in result set') {
-                // Invalid cookie, quietly ignore
+            const errorMsg = err?.value?.error?.() || err?.message || '';
+            // Clear the cookie if expired or invalid
+            if (
+                errorMsg.includes('sql: no rows in result set') ||
+                errorMsg.includes('token is expired')
+            ) {
+                // Match the same cookie options used when setting
+                const appUrl = $app.settings().appURL;
+
+                e.setCookie({
+                    name: 'pb_auth',
+                    value: '', // clear value
+                    path: '/',
+                    maxAge: 0, // expires immediately
+                    secure: appUrl?.startsWith('https://') ? true : false,
+                    httpOnly: false, // same as when you set it
+                    sameSite: true
+                });
             } else {
                 console.log('Auth error', err);
             }
