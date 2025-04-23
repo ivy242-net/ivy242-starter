@@ -130,6 +130,9 @@ echo "Running initial build..."
 
 cd ..
 
+# Create pb_hooks/pages/assets directory (necessary for the build)
+mkdir -p server/pb_hooks/pages/assets
+
 # Run the build script
 npm run build -w scripts
 
